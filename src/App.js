@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { FileImport } from './components/file-import';
+import { FileOutput } from './components/file-output';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         >
           Learn React
         </a>
+        {/*<ShowFile />*/}
+        <FileImport />
+        {/*<FileOutput />*/}
       </header>
     </div>
   );
