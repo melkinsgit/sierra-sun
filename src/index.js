@@ -8,7 +8,10 @@ import { rootReducer } from './reducers/rootReducer'
 import App from './App'
 
 const rootElement = document.getElementById('root');
-const store = createStore(rootReducer);
+const defaultState = {
+    participantList: []
+};
+const store = createStore(rootReducer, defaultState);
 
 render(
     <Provider store={store}>

@@ -1,6 +1,8 @@
 import React from 'react';
+import {getParticipantList} from "./file-import-helper";
 
-export const FileImport = () => {
+export const FileImport = (props) => {
+    console.log('props in file import', props)
 
     const onChangeHandler = event => {
         const tripReport = event.target.files[0];
@@ -9,7 +11,9 @@ export const FileImport = () => {
         reader.addEventListener("load", function(event) {
             const textFile = event.target;
             const result = textFile.result;
-            console.log(result.split('\n'))
+            const participantList = result.split('\n');
+            console.log(participantList);
+            props.writeNewParticipantList(participantList);
         });
         reader.readAsText(tripReport);
     };
