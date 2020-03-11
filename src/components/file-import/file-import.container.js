@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import { FileImport } from "./file-import";
 import {updateParticipantList} from "../../reducers/action-creators";
 
-const mapStateToProps = (state = {}) => ({
+const mapStateToProps = (state = []) => ({
     participantList: state.participantList
 });
 

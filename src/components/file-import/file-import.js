@@ -11,9 +11,8 @@ export const FileImport = (props) => {
         reader.addEventListener("load", function(event) {
             const textFile = event.target;
             const result = textFile.result;
-            const participantList = result.split('\n');
-            console.log(participantList);
-            props.writeNewParticipantList(participantList);
+            // const participantList = result.split('\n');
+            props.writeNewParticipantList(result.split('\n'));
         });
         reader.readAsText(tripReport);
     };
@@ -21,6 +20,7 @@ export const FileImport = (props) => {
     return (
         <div className={'file-import'}>
             <input type="file" name="file" onChange={onChangeHandler}/>
+            <div>{props.participantList}</div>
         </div>
     )
 };

@@ -9,7 +9,6 @@ export const ShowFile = () => {
         reader.addEventListener("load", function(event) {
             const textFile = event.target;
             const result = textFile.result;
-            console.log(result.split('\n'))
         });
         reader.readAsText(tripReport);
     };

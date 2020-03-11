@@ -6,12 +6,11 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { rootReducer } from './reducers/rootReducer'
 import App from './App'
+import participantList from "./reducers/participant-list";
 
 const rootElement = document.getElementById('root');
-const defaultState = {
-    participantList: []
-};
-const store = createStore(rootReducer, defaultState);
+const defaultState = {};
+const store = createStore(participantList, defaultState);
 
 render(
     <Provider store={store}>
