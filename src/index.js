@@ -5,17 +5,15 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { rootReducer } from './reducers/rootReducer'
-import App from './App'
 import participantList from "./reducers/participant-list";
+import App from "./app/app";
 
 const rootElement = document.getElementById('root');
 const defaultState = {};
-const store = createStore(participantList, defaultState);
+// const store = createStore(participantList, defaultState);
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+        <App />,
     rootElement
 );
 

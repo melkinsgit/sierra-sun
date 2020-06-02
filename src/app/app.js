@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import FileImportContainer from './components/file-import/file-import.container';
-import { FileOutput } from './components/file-output';
+import logo from '../logo.svg';
+import './app.css';
+import { FileImport } from "../components/file-import/file-import";
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
           Learn React
         </a>
         {/*<ShowFile />*/}
-        <FileImportContainer />
+        <FileImport />
         {/*<FileOutput />*/}
       </header>
     </div>
