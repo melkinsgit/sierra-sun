@@ -1,21 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import tripReport from './../sierra_sun_20446';
 
 export const ShowFile = () => {
-
-    const onChangeHandler = event => {
-        const tripReport = event.target.files[0];
-        console.log(tripReport.name);
-        const reader = new FileReader();
-        reader.addEventListener("load", function(event) {
-            const textFile = event.target;
-            const result = textFile.result;
-        });
-        reader.readAsText(tripReport);
-    };
-
+    console.log(tripReport)
     return (
-        <div className={'file-import'}>
-            <input type="file" name="file" onChange={onChangeHandler}/>
+        <div>
+            {tripReport.participant}
+            {Object.keys(tripReport).forEach(key => {console.log(key)})}
+            <input type="text" id="participant" name="participant" value={tripReport.participant} />
+            <input type="text" id="firstName" name="firstName" value={tripReport.firstName} />
+            <input type="text" id="lastName" name="lastName" value={tripReport.lastName} />
+            <input type="text" id="memberNumber" name="memberNumber" value={tripReport.memberNumber} />
         </div>
-    )
-};
+    )};
