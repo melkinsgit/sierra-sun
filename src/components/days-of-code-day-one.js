@@ -2,7 +2,6 @@ import React from 'react';
 import { puzzleInputDayOne } from './puzzleInputDayOne'
 
 export const DaysOfCodeDayOne = () => {
-    const sampleInput = [34, 11, 19, 22, 16]
     let count = 0;
     const getAnswer = (testInput) => {
         testInput.forEach(currentAmount => {

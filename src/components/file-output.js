@@ -14,25 +14,56 @@ export const FileOutput = (props) => {
                 data = e.target.result
                 const lines = data.split('\n')
 
-                const result = lines.filter(line => {
-                    const [positions, letter, password] = line.split(' ');
-                    const string2 = letter && letter.slice(0, 1);
-                    const [minCt, maxCt] = positions && positions.split('-')
-                    if (minCt && maxCt) {
-                        const isAtPositionOne = password.charAt(minCt-1) === letter.charAt(0);
-                        const isAtPositionTwo = password.charAt(maxCt-1) === letter.charAt(0);
-                        console.log('password', password, '11111', isAtPositionOne, '222222', isAtPositionTwo)
-                        const isAtOneNotTwo = isAtPositionOne && !isAtPositionTwo;
-                        const isAtTwoNotOne = !isAtPositionOne && isAtPositionTwo;
-                        return isAtOneNotTwo || isAtTwoNotOne;
-                        // const regex = new RegExp(string2, 'g');
-                        // const letterCount = password.match(regex) && password.match(regex).length;
-                        // const countInRange = letterCount && letterCount >= minCt && letterCount <= maxCt
-                        // return countInRange
-                    }
-                })
-                console.log('result===>', result.length)
+                const linesInFile = lines.length;
+                const aFewLines = lines.slice(0, 15)
+                const linesInAFewLines = aFewLines.length;
+                // console.log(aFewLines)
+                const theBigTwoByTwo = lines.map(line => line.split(''));
+                const twoByTwo = aFewLines.map(line => line.split(''));
+                // console.log(twoByTwo)
+                let treeCount = 0;
 
+                const testString =
+                    ".......#................#......\n" +
+                    "...#T#.....#.##.....#..#.......\n" +
+                    "..#..#.T......#.#.#............\n" +
+                    "....#...#.T..#.....#..#.....#..\n" +
+                    "....#.......#T##......#...#..#.\n";
+                const rows = testString.split('\n')
+                const testTwoByTwo = rows.map(line => line.split(''));
+                console.log(testTwoByTwo)
+
+
+
+
+                theBigTwoByTwo.forEach((line, lineIdx) => {
+                    console.log('got a new line')
+                    // console.log('the line is', line)
+                    if (lineIdx > 0) {
+                        console.log('what is the counter', lineIdx * 3 + 1)
+                        const square = line[(lineIdx * 3 + 1) % 30];
+                        console.log('square is ==>', square)
+                        if (square === '#') {
+                            console.log('got the Tree')
+                            treeCount++;
+                        }
+                        // console.log('the indexed element of line', line, 'and index', stepIdx, '===>', line[(1 + stepIdx) *3])
+                    }
+
+
+                    //         line.forEach((step, stepIdx) => {
+                    //         if(stepIdx % 3 === 0 && stepIdx !== 0) {
+                    //             const square = line[(1 + stepIdx) * 3];
+                    //             console.log('at', lineIdx, ',', stepIdx, 'square is ==>', square)
+                    //             if (square === '#') {
+                    //                 treeCount++;
+                    //             }
+                    //             // console.log('the indexed element of line', line, 'and index', stepIdx, '===>', line[(1 + stepIdx) *3])
+                    //         }
+                    //     })
+                    // }
+                })
+                console.log(treeCount)
 
 
 
@@ -41,37 +72,6 @@ export const FileOutput = (props) => {
             reader.readAsText(file);
             const textFile = /text.*/;
 
-
-
-
-
-
-
-
-
-
-
-
-            // return data;
-
-            // if (file.type.match(textFile)) {
-            //     console.log('it was a text file before read onload')
-            //     reader.onload = function (event) {
-            //         preview.innerHTML = event.target.result;
-            //     }
-            //     console.log('it was a text file after read onload')
-            // } else {
-            //     preview.innerHTML = "<span class='error'>It doesn't seem to be a text file!</span>";
-            // }
-            // reader.readAsText(file);
-            // console.log(reader)
-
-
-            // var fr = new FileReader();
-            // fr.onload = function(e) {
-            //     // e.target.result should contain the text
-            // };
-            // fr.readAsText(file);
 
         } else {
             alert("Your browser is too old to support HTML5 File API");
